@@ -22,7 +22,10 @@ function FollowerCreatorsView({ onSelectCreator }) {
     };
 
     useEffect(() => {
-        loadCreators();
+        const init = async () =>{
+           await loadCreators();
+        }
+        init();
     }, []);
 
     const handleSearch = (event) => {

@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 function FollowerCreatorProfileView({ creatorId, followerId, onBack }) {
 
     const [creator, setCreator] = useState(null);
-    const [posts, setPosts] = useState(null); // null = no cargados, [] = cargados pero vacíos
+    const [posts, setPosts] = useState(null); // null = no cargados yyyy [] = cargados pero vacíos
     const [hasDonated, setHasDonated] = useState(false);
     const [loading, setLoading] = useState(true);
     const [donateError, setDonateError] = useState('');
@@ -16,6 +16,7 @@ function FollowerCreatorProfileView({ creatorId, followerId, onBack }) {
     const messageRef = useRef(null);
 
     const loadCreatorProfile = async () => {
+
         const response = await fetch(`http://localhost:3000/followers/${creatorId}/public`, {
             credentials: 'include'
         });
@@ -31,14 +32,14 @@ function FollowerCreatorProfileView({ creatorId, followerId, onBack }) {
         });
         if (response.ok) {
             const data = await response.json();
-            // solo guardamos text, postId, imageUrl, created_at (sin comentarios - el backend los incluye pero la consigna dice que solo el creador los ve)
-            const cleanPosts = data.map(p => ({
+           
+           /* const cleanPosts = data.map(p => ({
                 postId: p.postId,
                 text: p.text,
                 imageUrl: p.imageUrl,
                 created_at: p.created_at
-            }));
-            setPosts(cleanPosts);
+            }));*/
+            setPosts(data);
             setHasDonated(true);
         } else if (response.status === 403) {
             setHasDonated(false);
@@ -60,7 +61,7 @@ function FollowerCreatorProfileView({ creatorId, followerId, onBack }) {
         setDonateError('');
         setDonateSuccess('');
 
-        const flanCount = parseInt(flanCountRef.current.value);
+        const flanCount = parseInt(flanCountRef.current.value); //aqui no validamos que un chistoso ingrese texto
         if (!flanCount || flanCount < 1) {
             setDonateError('Ingresa al menos 1 flan');
             return;
@@ -156,7 +157,7 @@ function FollowerCreatorProfileView({ creatorId, followerId, onBack }) {
                 />
             )}
 
-            {/* Header del perfil */}
+            
             <div className="d-flex align-items-center gap-3 mb-3">
                 {creator.creatorProfile?.profilePhoto ? (
                     <img
@@ -181,10 +182,10 @@ function FollowerCreatorProfileView({ creatorId, followerId, onBack }) {
                 </div>
             </div>
 
-            {/* Botones favorito */}
+           
             <div className="d-flex gap-2 mb-3">
                 <button className="btn btn-outline-warning btn-sm" onClick={handleAddFavorite}>
-                    ★ Agregar a favoritos
+                    Agregar a favoritos
                 </button>
                 <button className="btn btn-outline-secondary btn-sm" onClick={handleRemoveFavorite}>
                     Quitar de favoritos
@@ -192,7 +193,7 @@ function FollowerCreatorProfileView({ creatorId, followerId, onBack }) {
             </div>
             {favoriteMsg && <p className="text-muted" style={{ fontSize: '13px' }}>{favoriteMsg}</p>}
 
-            {/* Metas */}
+            
             {creator.goals && creator.goals.length > 0 && (
                 <div className="card p-3 mb-4 shadow-sm">
                     <h6 className="fw-semibold mb-2">Metas de apoyo</h6>
@@ -205,10 +206,10 @@ function FollowerCreatorProfileView({ creatorId, followerId, onBack }) {
                 </div>
             )}
 
-            {/* Donación */}
+            
             <div className="card p-3 mb-4 shadow-sm">
                 <h6 className="fw-semibold mb-3">
-                    🍮 Enviar flanes — Bs. {creator.creatorProfile?.flanPrice} c/u
+                    Enviar flanes — Bs. {creator.creatorProfile?.flanPrice} c/u
                 </h6>
                 <form onSubmit={handleDonate}>
                     <div className="row g-2">
