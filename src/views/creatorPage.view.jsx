@@ -71,7 +71,7 @@ function CreatorPageView({ user }) {
         <div>
             <h4 className="fw-bold mb-4">Mi Página</h4>
 
-            {/* Formulario nuevo post */}
+            
             <div className="card p-3 mb-4 shadow-sm">
                 <h6 className="fw-semibold mb-3">Nueva publicación</h6>
                 <form onSubmit={handleCreatePost}>
@@ -91,7 +91,7 @@ function CreatorPageView({ user }) {
                 </form>
             </div>
 
-            {/* Lista de posts */}
+            
             {posts.length === 0 && <p className="text-muted">No tienes publicaciones aún.</p>}
 
             {posts.map((post) => (
@@ -122,7 +122,7 @@ function CreatorPageView({ user }) {
                             })}
                         </small>
 
-                        {/* Comentarios */}
+                        
                         {post.comments && post.comments.length > 0 && (
                             <div className="mt-3">
                                 <p className="fw-semibold mb-2" style={{ fontSize: '14px' }}>

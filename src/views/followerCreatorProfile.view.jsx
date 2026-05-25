@@ -32,13 +32,6 @@ function FollowerCreatorProfileView({ creatorId, followerId, onBack }) {
         });
         if (response.ok) {
             const data = await response.json();
-           
-           /* const cleanPosts = data.map(p => ({
-                postId: p.postId,
-                text: p.text,
-                imageUrl: p.imageUrl,
-                created_at: p.created_at
-            }));*/
             setPosts(data);
             setHasDonated(true);
         } else if (response.status === 403) {
@@ -270,7 +263,7 @@ function FollowerCreatorProfileView({ creatorId, followerId, onBack }) {
                             })}
                         </small>
 
-                        {/* Comentar */}
+                        
                         <div className="d-flex gap-2">
                             <input
                                 type="text"

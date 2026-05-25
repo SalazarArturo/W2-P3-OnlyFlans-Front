@@ -37,7 +37,6 @@ function FollowerDonationsView() {
         <div style={{ maxWidth: '700px' }}>
             <h4 className="fw-bold mb-4">Historial de Donaciones</h4>
 
-            {/* Filtros */}
             <div className="card p-3 mb-4 shadow-sm">
                 <h6 className="fw-semibold mb-3">Filtros</h6>
                 <form onSubmit={handleSearch}>

@@ -94,7 +94,7 @@ function CreatorProfileView({ user }) {
         <div style={{ maxWidth: '600px' }}>
             <h4 className="fw-bold mb-4">Mi Perfil</h4>
 
-            {/* Banner */}
+            
             {profile?.bannerPhoto && (
                 <img
                     src={`http://localhost:3000/${profile.bannerPhoto}`}

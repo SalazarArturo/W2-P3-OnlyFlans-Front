@@ -67,7 +67,7 @@ function CreatorGoalsView({ user }) {
         <div style={{ maxWidth: '600px' }}>
             <h4 className="fw-bold mb-4">Metas de Apoyo</h4>
 
-            {/* Formulario nueva meta */}
+           
             <div className="card p-3 mb-4 shadow-sm">
                 <h6 className="fw-semibold mb-3">Nueva meta</h6>
                 <form onSubmit={handleCreateGoal}>
@@ -92,7 +92,7 @@ function CreatorGoalsView({ user }) {
                 </form>
             </div>
 
-            {/* Lista de metas */}
+            
             {goals.length === 0 && <p className="text-muted">No tienes metas creadas aún.</p>}
 
             {goals.map((goal) => (

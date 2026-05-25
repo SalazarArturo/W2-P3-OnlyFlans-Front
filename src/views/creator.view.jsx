@@ -10,7 +10,7 @@ function CreatorView({ user }) {
 
     const [activeSection, setActiveSection] = useState('page');
     const navigate = useNavigate();
-
+    
     const handleLogout = async () => {
         await fetch('http://localhost:3000/auth/logout', {
             method: 'POST',
